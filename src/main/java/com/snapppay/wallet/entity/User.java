@@ -8,8 +8,6 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class User extends BaseEntity {
     @Column(name = "user_name", unique = true, nullable = false)
     private String userName;
@@ -24,5 +22,5 @@ public class User extends BaseEntity {
     private String passwordHash;
 
     @Column(nullable = false)
-    private boolean active;
+    private Boolean active;
 }
