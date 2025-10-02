@@ -26,21 +26,21 @@ services:
       timeout: 3s
       retries: 10
 
-#  wallet-service:
-#    build: .
-#    container_name: wallet-service
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/walletdb
-#      SPRING_DATASOURCE_USERNAME: root
-#      SPRING_DATASOURCE_PASSWORD: root
-#      REDIS_URL: redis://redis:6379
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      mysql:
-#        condition: service_healthy
-#      redis:
-#        condition: service_healthy
-#
+  wallet-service:
+    build: .
+    container_name: wallet-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/walletdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
 volumes:
   mysql_data:
