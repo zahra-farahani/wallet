@@ -1,0 +1,46 @@
+# Base configuration - shared across all environments
+spring:
+  application:
+    name: Wallet-Service
+  profiles:
+    active: dev
+  
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+    enabled: true
+  
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  
+  cache:
+    type: redis
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+
+# JWT Configuration - values come from Vault for example if we configured
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION:15m}
+
+# Application specific configs
+app:
+  default-currency: ${DEFAULT_CURRENCY:USD}
+
+# Logging
+logging:
+  level:
+    root: INFO
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
