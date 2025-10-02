@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: Wallet-Service
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+    enabled: true
+    contexts: dev
+    drop-first: true
+    clear-checksums: true
+  datasource:
+    url: ${JDBC_URL:jdbc:mysql://localhost:3306/walletdb}
+    username: ${JDBC_USER:root}
+    password: ${JDBC_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+server:
+  port: ${PORT:8080}
+jwt:
+  secret: ${JWT_SECRET:changemeinprodchangemeinprod12346789}
+  expiration: ${JWT_EXP:15m}
+app:
+  default-currency: USD
