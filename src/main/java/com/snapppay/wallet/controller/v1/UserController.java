@@ -1,8 +1,7 @@
 package com.snapppay.wallet.controller.v1;
 
-import com.snapppay.wallet.dto.request.AuthRequest;
-import com.snapppay.wallet.dto.response.AuthResponse;
-import com.snapppay.wallet.service.IAuthService;
+import com.snapppay.wallet.dto.request.RegisterRequest;
+import com.snapppay.wallet.service.impl.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.ResponseEntity.ok;
-
 @Slf4j
 @RestController
-@RequestMapping("/v1/auth")
+@RequestMapping("/v1/user")
 @RequiredArgsConstructor
-public class AuthController {
+public class UserController {
 
-    private final IAuthService authService;
+    private final UserService userService;
 
-    @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
-        return ok(authService.login(request));
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequest request) {
+        log.debug("Registering user: {}", request);
+        userService.register(request);
+        return ResponseEntity.ok().build();
     }
 }

@@ -5,20 +5,20 @@ import com.snapppay.wallet.entity.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Component
 public class JwtUtil {
 
@@ -28,7 +28,6 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private Duration EXPIRATION_TIME;
 
-    // Generate token with userId and roles
     public String generateToken(String username, Long userId, Set<Role> roles) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
@@ -54,7 +53,6 @@ public class JwtUtil {
         return extractClaim(token, claims -> claims.get("userId", Long.class));
     }
 
-    // Extract roles as Set of RoleType enums
     public Set<RoleType> extractRoles(String token) {
         return extractClaim(token,
                 claims -> {
@@ -95,12 +93,10 @@ public class JwtUtil {
     }
 
     private SecretKey getSigningKey() {
-        // Base64 encode the secret to make it longer
         String encodedSecret = Base64.getEncoder().encodeToString(
                 SECRET_KEY.getBytes(StandardCharsets.UTF_8)
         );
         byte[] keyBytes = encodedSecret.getBytes(StandardCharsets.UTF_8);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
 }

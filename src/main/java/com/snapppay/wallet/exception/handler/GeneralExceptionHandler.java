@@ -5,6 +5,7 @@ import com.snapppay.wallet.exception.common.BaseException;
 import com.snapppay.wallet.util.MessageSourceUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -19,8 +20,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Objects;
-
+@Slf4j
 @ControllerAdvice
 @RequiredArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -36,11 +36,10 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
                 API_STATUS,
                 String.valueOf(e.getHttpCode()),
                 MessageSourceUtil.getMessageIfExist(messageSource, e.getDescriptionKey())
-        ), HttpStatus.valueOf(e.getHttpCode())); //todo :: log
+        ), HttpStatus.valueOf(e.getHttpCode()));
         return responseEntity;
     }
 
-    // handle validation by overriding Spring's method
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex,
@@ -57,7 +56,6 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
-    // fallback: override handleExceptionInternal instead of using @ExceptionHandler(Exception.class)
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
             Exception ex,

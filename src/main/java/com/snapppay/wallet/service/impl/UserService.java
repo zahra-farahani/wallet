@@ -7,8 +7,10 @@ import com.snapppay.wallet.exception.messages.AlreadyExistedPhoneNumberException
 import com.snapppay.wallet.repository.UserRepository;
 import com.snapppay.wallet.service.IUserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService {
