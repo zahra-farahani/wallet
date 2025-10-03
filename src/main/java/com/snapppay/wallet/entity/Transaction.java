@@ -31,7 +31,4 @@ public class Transaction extends BaseEntity {
 
     @Column(name = "idempotency_key", nullable = false)
     private String idempotencyKey;
-
-    @Column(columnDefinition = "JSON")
-    private String metadata;
 }
