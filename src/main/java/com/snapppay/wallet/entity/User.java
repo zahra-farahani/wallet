@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User extends BaseEntity {
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
