@@ -1,4 +1,3 @@
-# Development environment configuration
 spring:
   liquibase:
     contexts: dev
@@ -13,17 +12,18 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
-  # Redis configuration
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      timeout: 2000ms
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 2
+        host: ${REDIS_HOST:localhost}
+        port: ${REDIS_PORT:6379}
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    redisson:
+      config: |
+        singleServerConfig:
+          address: "redis://${REDIS_HOST:localhost}:${REDIS_PORT:6379}"   
 
   # Cache configuration
   cache:
@@ -38,16 +38,13 @@ spring:
         format_sql: true
         use_sql_comments: true
 
-# Development server settings
 server:
   port: ${PORT:8080}
 
-# JWT - less strict for development
 jwt:
   secret: ${JWT_SECRET:dev-secret-key-only-for-local-testing-min-32-chars}
   expiration: ${JWT_EXPIRATION:60m}
 
-# Detailed logging for development
 logging:
   level:
     root: INFO
@@ -57,7 +54,6 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     liquibase: DEBUG
 
-# Development-specific features
 management:
   endpoints:
     web:

@@ -1,7 +1,7 @@
-package com.snapppay.wallet.controller.v1;
+package com.snapppay.wallet.api.v1;
 
 import com.snapppay.wallet.dto.request.RegisterRequest;
-import com.snapppay.wallet.service.impl.UserService;
+import com.snapppay.wallet.service.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final IUserService userService;
 
     @PostMapping("/register")
     public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequest request) {
