@@ -1,4 +1,4 @@
-package com.snapppay.wallet.controller.v1;
+package com.snapppay.wallet.api.v1;
 
 import com.snapppay.wallet.dto.request.RegisterRequest;
 import com.snapppay.wallet.service.IUserService;

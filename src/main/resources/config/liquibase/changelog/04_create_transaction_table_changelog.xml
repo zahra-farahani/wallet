@@ -24,13 +24,10 @@
             <column name="wallet_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="amount" type="DOUBLE">
+            <column name="amount" type="NUMERIC">
                 <constraints nullable="false"/>
             </column>
             <column name="type" type="VARCHAR(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="idempotency_key" type="VARCHAR(64)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

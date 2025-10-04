@@ -9,7 +9,6 @@
     <include file="/config/liquibase/changelog/03_create_wallet_table_changelog.xml" relativeToChangelogFile="false"/>
     <include file="/config/liquibase/changelog/04_create_transaction_table_changelog.xml" relativeToChangelogFile="false"/>
 
-
     <changeSet id="load-dev-data" author="zahrashahrabi" context="dev">
         <sqlFile path="data/data-dev.sql" relativeToChangelogFile="true"/>
     </changeSet>

@@ -2,7 +2,6 @@ package com.snapppay.wallet.dto.request;
 
 import com.snapppay.wallet.util.RegexPatterns;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;

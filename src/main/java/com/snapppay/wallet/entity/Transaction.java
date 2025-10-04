@@ -3,15 +3,18 @@ package com.snapppay.wallet.entity;
 import com.snapppay.wallet.dto.enumeration.TransactionStatus;
 import com.snapppay.wallet.dto.enumeration.TransactionType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transactions")
 @Getter
 @Setter
+@SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Transaction extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,12 +26,9 @@ public class Transaction extends BaseEntity {
     private TransactionType type;
 
     @Column(nullable = false)
-    private Double amount;
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TransactionStatus status;
-
-    @Column(name = "idempotency_key", nullable = false)
-    private String idempotencyKey;
 }

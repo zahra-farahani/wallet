@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  liquibase:
+    enabled: false
+
+JWT_SECRET: test-secret-key-for-testing-purposes-must-be-long-enough
+JWT_EXPIRATION: 86400000

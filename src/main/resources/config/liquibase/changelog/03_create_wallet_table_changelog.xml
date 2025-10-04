@@ -24,7 +24,7 @@
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="balance" type="DOUBLE">
+            <column name="balance" type="NUMERIC">
                 <constraints nullable="false"/>
             </column>
             <column name="version" type="BIGINT">

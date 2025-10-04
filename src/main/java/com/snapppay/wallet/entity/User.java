@@ -2,6 +2,7 @@ package com.snapppay.wallet.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +11,9 @@ import java.util.Set;
 @Table(name = "users")
 @Getter
 @Setter
+@SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity {
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;

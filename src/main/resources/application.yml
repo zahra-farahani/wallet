@@ -26,7 +26,12 @@ jwt:
   expiration: ${JWT_EXPIRATION:15m}
 
 app:
-  default-currency: ${DEFAULT_CURRENCY:USD}
+  lock:
+    wait-seconds: 5
+    lease-seconds: 30
+    max-retries: 3
+    base-backoff-ms: 200
+    max-backoff-ms: 500
 
 logging:
   level:
