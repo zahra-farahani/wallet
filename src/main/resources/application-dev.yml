@@ -12,17 +12,18 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
-  # Redis configuration
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      timeout: 2000ms
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 2
+        host: ${REDIS_HOST:localhost}
+        port: ${REDIS_PORT:6379}
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    redisson:
+      config: |
+        singleServerConfig:
+          address: "redis://${REDIS_HOST:localhost}:${REDIS_PORT:6379}"   
 
   # Cache configuration
   cache:

@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Testcontainers
 @Slf4j
 @AutoConfigureMockMvc(addFilters = false)
-class WalletOrchestratorIntegrationTests {
+public class WalletOrchestratorIntegrationTests {
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {

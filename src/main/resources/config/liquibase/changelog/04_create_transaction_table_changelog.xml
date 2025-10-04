@@ -37,9 +37,5 @@
                 referencedTableName="wallets"
                 referencedColumnNames="id"
                 constraintName="fk_transaction_wallet"/>
-        <addUniqueConstraint
-                tableName="transaction"
-                columnNames="wallet_id, idempotency_key"
-                constraintName="uq_transaction_wallet_id_idempotency_key"/>
     </changeSet>
 </databaseChangeLog>
