@@ -17,6 +17,6 @@ public class TransferRequest {
     private Long toWalletId;
 
     @NotNull(message = "amount.empty")
-    @DecimalMin(value = "100000.0", message = "top.up.min.amount")
+    @DecimalMin(value = "100000.0", message = "min.amount")
     private BigDecimal amount;
 }
